@@ -29,7 +29,7 @@ The main objective of this project is to demonstrate foundational data engineeri
 ---
 ## 📐 Architecture Overview
 
-![](images/Architecture Overview.png)
+![](images/Architecture_Overview.png)
 
 ---
 
@@ -83,15 +83,15 @@ These steps ensure the data is clean and ready for analysis.
 
 ### Extraction Evidence 
 
-![The dataset is extracted using the Kaggle API and loaded into a Pandas DataFrame.](images/Extraction Evidence.png)
+![The dataset is extracted using the Kaggle API and loaded into a Pandas DataFrame.](images/Extraction_Evidence.png)
 
 ### Transformation Evidence
 
-![Data transformations include handling missing values, cleaning salary formats, converting salary ranges into numeric averages, and normalizing location fields.](images/Loading Evidence.png)
+![Data transformations include handling missing values, cleaning salary formats, converting salary ranges into numeric averages, and normalizing location fields.](images/Loading_Evidence.png)
 
 ### Loading Evidence
 
-![The cleaned dataset is successfully loaded into a SQLite database and validated by querying the table after insertion.](images/Transformation Evidence.png)
+![The cleaned dataset is successfully loaded into a SQLite database and validated by querying the table after insertion.](images/Transformation_Evidence.png)
 
 ---
 
