@@ -48,28 +48,43 @@ df.head(10)
 #We will check again how many null values each column has using the function below.
 df.isnull().sum()
 
+'''We changed the lines of code for a function'''
 # Since the 'Salary' column contains characters like '$' and 'k', we need to remove these characters to convert the column to numeric values.
-df['Salary'] = df['Salary'].str.replace("$",'')
-df['Salary'] = df['Salary'].str.replace("k",'')
+def clean_1(x):
+    x=x.replace("$",'')
+    x=x.replace("k",'')
+    return x
+
+df['Salary'] = df['Salary'].apply(clean_1)
 df.head()
 
+'''We changed the for statement to a function that allows us to create a reusable block of code.'''
 #Convert the string into float by getting the average
-for index, row in df.iterrows():
-    salary = row["Salary"]
-    salary_parts = salary.split("-")
-    salary1 = float(salary_parts[0])
-    salary2 = float(salary_parts[1])
-    average_salary = (salary1 + salary2) / 2
-    df.at[index, "Salary"] = average_salary
+def average_of_this_two(args):
+    try :
+        return float(args)
+    except:
+        values = args.split('-')
+        if len(values) == 2:
+            return float(int(values[0]) + int(values[1]) ) /2
 
-df.head()
+df['Salary'] = df["Salary"].apply(average_of_this_two)
+df.head(5)
 
+'''We change the for statement to a function'''
 # Clean the location column
-for index, row in df.iterrows():
-  location = row["Location"]
-  location_parts = location.split(",")
-  df.at[index, "Location"] = location_parts[0]
+def clean_location(location):
+    # Split on spaces
+    parts = location.split(',')
 
+    # If there are exactly 2 parts (e.g., "New York"), combine them
+    if len(parts) == 2:
+        return parts[0]
+    else:
+        return location.split(' ')[0]
+
+# Apply the function to the 'location' column
+df['Location'] = df['Location'].apply(clean_location)
 df.head()
 
 #Convert all -1 to FALSE
